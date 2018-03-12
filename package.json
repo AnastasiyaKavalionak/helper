@@ -1,0 +1,13 @@
+{
+  "name": "helper",
+  "version": "1.0.0",
+  "author": "Anastasiya Kavalionak",
+  "license": "ISC",
+  "scripts": {
+    "update": "webdriver-manager update",
+    "e2e": "protractor protractor.config.js"
+  },
+  "devDependencies": {
+    "protractor": "^5.2.0"
+  }
+}
