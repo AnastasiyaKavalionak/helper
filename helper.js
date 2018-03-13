@@ -12,5 +12,5 @@ class Helper {
     };
 }
 
-module.exports = Helper;
+module.exports = new Helper();
 
