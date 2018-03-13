@@ -13,7 +13,7 @@ class BrowserHelper {
         return browser.get(url);
     }
 
-    CheckTitle(title) {
+    checkTitle(title) {
 
         return expect(browser.getTitle()).toBe(title);
     }
