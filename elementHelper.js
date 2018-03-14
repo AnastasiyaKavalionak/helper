@@ -30,7 +30,7 @@ class ElementHelper {
 
     scrollTo(element) {
 
-        return element.scrollIntoView(false);
+        return browser.executeScript(element.scrollIntoView(false));
     }
 }
 

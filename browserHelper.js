@@ -17,6 +17,10 @@ class BrowserHelper {
 
         return expect(browser.getTitle()).toBe(title);
     }
+
+    closeBrowser() {
+        return browser.close();
+    }
 }
 
 module.exports = BrowserHelper;
