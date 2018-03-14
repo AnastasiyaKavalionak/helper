@@ -27,11 +27,6 @@ class ElementHelper {
 
         return element.getLocation();
     }
-
-    scrollTo(element) {
-
-        return browser.executeScript(element.scrollIntoView(false));
-    }
 }
 
 module.exports = ElementHelper;

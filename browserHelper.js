@@ -21,6 +21,11 @@ class BrowserHelper {
     closeBrowser() {
         return browser.close();
     }
+
+    scrollTo(coordinates) {
+
+        return browser.executeScript(window.scrollTo(coordinates.x, coordinates.y));
+    }
 }
 
 module.exports = BrowserHelper;
