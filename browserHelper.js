@@ -24,7 +24,7 @@ class BrowserHelper {
 
     scrollTo(coordinates) {
 
-        return browser.executeScript(global.window.scrollTo(coordinates.x, coordinates.y));
+        return browser.executeScript(window.scrollTo(coordinates.x, coordinates.y));
     }
 }
 
