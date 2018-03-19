@@ -27,6 +27,11 @@ class BrowserHelper {
         logger.info(`scroll to  coordinates ${coordinates.x}, ${coordinates.y}`);
         return browser.executeScript(`window.scrollTo(${coordinates.x}, ${coordinates.y})`);
     }
+
+    waitTitleIs(title) {
+        logger.info(`wait until title is ${title}`);
+        return browser.wait(EC.titleIs(title));
+    }
 }
 
 module.exports = BrowserHelper;
