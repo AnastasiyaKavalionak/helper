@@ -21,7 +21,7 @@ class Helper {
     setTextInputValue(text, element) {
         logger.info(`set text input ${element} value ${text}`);
         return helper.elementHelper.waitForVisibilityOf(element)
-            .then(() => helper.elementHelper.clickOn(element))
+            .then(() => helper.elementHelper.focusOn(element))
             .then(() => helper.elementHelper.clear(element))
             .then(() => helper.elementHelper.typeTextIn(text, element));
     }
