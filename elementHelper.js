@@ -30,7 +30,7 @@ class ElementHelper {
 
     focusOn(element) {
 
-        return broser.switchTo().activeElement(element.getWebElement());
+        return browser.switchTo().activeElement(element.getWebElement());
     }
 
     typeTextIn(text, element) {
@@ -43,7 +43,15 @@ class ElementHelper {
         return element.clear();
     }
 
+    focusAndClearAndTypeText(text, element) {
 
+        return
+    }
+
+    scrollAndWaitAndClick(element) {
+
+        return
+    }
 }
 
 module.exports = ElementHelper;
