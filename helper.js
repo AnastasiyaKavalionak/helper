@@ -26,10 +26,10 @@ class Helper {
             .then(() => helper.elementHelper.typeTextIn(text, element));
     }
 
-    scrollAndWaitAndClick(element) {
+    scrollAndWaitAndClick(element, scrollFlag) {
         logger.info(`scroll and wait and click ${element}`);
         return helper.elementHelper.waitForVisibilityOf(element)
-            .then(() => helper.browserHelper.scrollTo(helper.elementHelper.getCoordinatesOf(element)))
+            .then(() => scrollFlag ? helper.browserHelper.scrollTo(helper.elementHelper.getCoordinatesOf(element)) : {})
             .then(() => helper.elementHelper.waitForClickabilityOf(element))
             .then(() => helper.elementHelper.clickOn(element));
     }
