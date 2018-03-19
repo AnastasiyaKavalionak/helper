@@ -9,6 +9,7 @@
     "e2e": "protractor protractor.config.js"
   },
   "devDependencies": {
+    "log4js": "^2.5.3",
     "protractor": "^5.2.0"
   }
 }
