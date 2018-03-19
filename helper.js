@@ -20,10 +20,10 @@ class Helper {
 
     setTextInputValue(text, element) {
         logger.info(`set text input ${element} value ${text}`);
-        helper.elementHelper.waitForVisibilityOf(element);
-            helper.elementHelper.focusOn(element);
-          helper.elementHelper.clear(element);
-            helper.elementHelper.typeTextIn(text, element);
+        return helper.elementHelper.waitForVisibilityOf(element)
+            .then(() => helper.elementHelper.focusOn(element))
+            .then(() => helper.elementHelper.clear(element))
+            .then(() => helper.elementHelper.typeTextIn(text, element));
     }
 
     scrollAndWaitAndClick(element, scrollFlag) {
