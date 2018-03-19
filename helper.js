@@ -41,7 +41,7 @@ class Helper {
     }
 
     scrollAndWaitAndClickAndWaitTitleIs(element, scrollFlag, title) {
-        logger.info(`scroll and wait and click ${element} and checked title should be ${title}`);
+        logger.info(`scroll and wait and click ${element} and wait until title is ${title}`);
         return this.scrollAndWaitAndClick(element, scrollFlag)
             .then(() => this.browserHelper.waitTitleIs(title));
     }
