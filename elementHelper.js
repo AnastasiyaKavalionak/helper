@@ -27,6 +27,23 @@ class ElementHelper {
 
         return element.getLocation();
     }
+
+    focusOn(element) {
+
+        return broser.switchTo().activeElement(element.getWebElement());
+    }
+
+    typeTextIn(text, element) {
+
+        return element.sendKeys(text);
+    }
+
+    clear(element) {
+
+        return element.clear();
+    }
+
+
 }
 
 module.exports = ElementHelper;
