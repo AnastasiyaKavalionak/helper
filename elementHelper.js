@@ -42,16 +42,6 @@ class ElementHelper {
         logger.info(`clear element ${element}`);
         return element.clear();
     }
-
-    focusAndClearAndTypeText(text, element) {
-
-        return
-    }
-
-    scrollAndWaitAndClick(element) {
-
-        return
-    }
 }
 
 module.exports = ElementHelper;
