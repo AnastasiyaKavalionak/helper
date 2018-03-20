@@ -32,6 +32,11 @@ class BrowserHelper {
         logger.info(`wait until title is ${title}`);
         return browser.wait(EC.titleIs(title));
     }
+
+    focusOnCurrentWindow() {
+        logger.info('focus on currwnt window');
+        return browser.switchTo().window(browser.getWindowHandle());
+    }
 }
 
 module.exports = BrowserHelper;
