@@ -33,7 +33,7 @@ class ElementHelper {
         return browser.switchTo().activeElement(element.getWebElement());
     }
 
-    typeTextIn(text, element) {
+    typeTextIn(element, text) {
         logger.info(`type ${text} in element ${element}`);
         return element.sendKeys(text);
     }
