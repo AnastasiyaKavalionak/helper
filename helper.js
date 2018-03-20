@@ -27,7 +27,7 @@ class Helper {
         return this.elementHelper.waitForVisibilityOf(element)
             .then(() => this.elementHelper.focusOn(element))
             .then(() => this.elementHelper.clear(element))
-            .then(() => this.elementHelper.typeTextIn(text, element))
+            .then(() => this.elementHelper.typeTextIn(element, text))
             .then(() => this.browserHelper.focusOnCurrentWindow());
     }
 

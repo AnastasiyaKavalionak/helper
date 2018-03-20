@@ -9,7 +9,16 @@
     "e2e": "protractor protractor.config.js"
   },
   "devDependencies": {
+    "esdoc": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0",
     "log4js": "^2.5.3",
     "protractor": "^5.2.0"
+  },
+  "esdoc": {
+    "source": "./src",
+    "destination": "./docs",
+    "plugins": [
+      {"name": "esdoc-standard-plugin"}
+    ]
   }
 }
