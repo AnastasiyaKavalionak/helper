@@ -18,7 +18,11 @@ class Helper {
         this.elementHelper = new ElementHelper();
     };
 
-    setTextInputValue(text, element) {
+    /**
+     * @param {ElementFinder} element - link on element from DOM
+     * @param {string} text - text for typing in element
+     */
+    setTextInputValue(element, text) {
         logger.info(`set text input ${element} value ${text}`);
         return this.elementHelper.waitForVisibilityOf(element)
             .then(() => this.elementHelper.focusOn(element))
@@ -27,6 +31,10 @@ class Helper {
             .then(() => this.browserHelper.focusOnCurrentWindow());
     }
 
+    /**
+     * @param {ElementFinder} element - link on element from DOM
+     * @param {boolean} scrollFlag - show needs of scrolling
+     */
     scrollAndWaitAndClick(element, scrollFlag) {
         logger.info(`scroll and wait and click ${element}`);
         return this.elementHelper.waitForVisibilityOf(element)
@@ -34,6 +42,12 @@ class Helper {
             .then(() => this.elementHelper.waitForClickabilityOf(element))
             .then(() => this.elementHelper.clickOn(element));
     }
+
+    /**
+     * @param {ElementFinder} element - link on element from DOM
+     * @param {boolean} scrollFlag - show needs of scrolling
+     * @param {string} title - page title that is expected
+     */
 
     scrollAndWaitAndClickAndWaitTitleIs(element, scrollFlag, title) {
         logger.info(`scroll and wait and click ${element} and wait until title is ${title}`);

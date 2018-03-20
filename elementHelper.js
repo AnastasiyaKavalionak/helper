@@ -42,6 +42,11 @@ class ElementHelper {
         logger.info(`clear element ${element}`);
         return element.clear();
     }
+
+    checkAttribute(element, attribute, value) {
+        logger.info(`attribute ${attribute} of ${element} should be ${value}`);
+        return expect(element.getAttribute(attribute)).toBe(value);
+    }
 }
 
 module.exports = ElementHelper;
