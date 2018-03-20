@@ -54,6 +54,34 @@ class Helper {
         return this.scrollAndWaitAndClick(element, scrollFlag)
             .then(() => this.browserHelper.waitTitleIs(title));
     }
+
+    getValueOfSelectedItemFromList(list) {
+        return list.filter((element) => {
+           return this.elementHelper.getAttribute(element, 'selected')
+               .then((result) => {
+                   if (result === 'selected')
+                       return this.elementHelper.getAttribute(element, 'value');
+               });
+        })[0];
+    }
+
+    setValueOfSelectedItemFromList(list, value) {
+        return list.filter((element) => {
+            return this.elementHelper.getAttribute(element, 'value')
+                .then((result) => {
+                    if (result === 'value')
+                        return this.elementHelper.clickOn(element);
+                });
+        })[0];
+    }
+
+    radioInputIsSelected(radiogroup, value) {
+        return
+    }
+
+    radioInputValueOfSelected(radiogroup, value) {
+        return
+    }
 }
 
 module.exports = new Helper();

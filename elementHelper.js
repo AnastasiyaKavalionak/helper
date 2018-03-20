@@ -43,9 +43,9 @@ class ElementHelper {
         return element.clear();
     }
 
-    checkAttribute(element, attribute, value) {
-        logger.info(`attribute ${attribute} of ${element} should be ${value}`);
-        return expect(element.getAttribute(attribute)).toBe(value);
+    getAttribute(element, attribute) {
+        logger.info(`attribute ${attribute} of ${element} is `);
+        return element.getAttribute(attribute);
     }
 }
 
