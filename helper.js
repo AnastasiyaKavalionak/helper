@@ -82,7 +82,7 @@ class Helper {
                     if (result)
                         return this.elementHelper.getAttribute(radiobutton, 'value');
                 });
-        });
+        }).first();
     }
 
     selectElementByValueOfFromRadiogroup(radiogroup, value) {
@@ -92,7 +92,7 @@ class Helper {
                     if (result)
                         return this.elementHelper.clickOn(radiobutton);
                 });
-        });
+        }).first();
     }
 }
 
