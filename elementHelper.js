@@ -47,6 +47,19 @@ class ElementHelper {
         logger.info(`attribute ${attribute} of ${element} is `);
         return element.getAttribute(attribute);
     }
+
+    checkAttribute(element, attribute, value) {
+        logger.info(`is attribute ${attribute} of element ${element} equal ${value}`);
+        return this.getAttribute(element, attribute)
+            .then((result) => {
+                return result === value;
+            });
+    }
+
+    checkIsElementSelected(element) {
+        logger.info(`is element ${element} selected`);
+        return EC.elementToBeSelected(element);
+    }
 }
 
 module.exports = ElementHelper;

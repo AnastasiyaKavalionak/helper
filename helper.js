@@ -57,30 +57,42 @@ class Helper {
 
     getValueOfSelectedItemFromList(list) {
         return list.filter((element) => {
-           return this.elementHelper.getAttribute(element, 'selected')
+           return this.elementHelper.checkAttribute(element, 'selected', 'selected')
                .then((result) => {
-                   if (result === 'selected')
+                   if (result)
                        return this.elementHelper.getAttribute(element, 'value');
                });
-        })[0];
+        }).first();
     }
 
-    setValueOfSelectedItemFromList(list, value) {
+    selectElementByValueFromList(list, value) {
         return list.filter((element) => {
-            return this.elementHelper.getAttribute(element, 'value')
+            return this.elementHelper.checkAttribute(element, 'value', value)
                 .then((result) => {
-                    if (result === 'value')
+                    if (result)
                         return this.elementHelper.clickOn(element);
                 });
-        })[0];
+        }).first();
     }
 
-    radioInputIsSelected(radiogroup, value) {
-        return
+    getValueOfSelectedItemFromRadiogroup(radiogroup) {
+        return radiogroup.filter((radiobutton) => {
+            return this.elementHelper.checkIsElementSelected(radiobutton)
+                .then((result) => {
+                    if (result)
+                        return this.elementHelper.getAttribute(radiobutton, 'value');
+                });
+        });
     }
 
-    radioInputValueOfSelected(radiogroup, value) {
-        return
+    selectElementByValueOfFromRadiogroup(radiogroup, value) {
+        return radiogroup.filter((radiobutton) => {
+            return this.elementHelper.checkAttribute(radiobutton, 'value', value)
+                .then((result) => {
+                    if (result)
+                        return this.elementHelper.clickOn(radiobutton);
+                });
+        });
     }
 }
 
