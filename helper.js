@@ -18,6 +18,13 @@ class Helper {
         this.elementHelper = new ElementHelper();
     };
 
+
+    scrollIfItNecessary(element) {
+        if (!this.elementHelper.isElementOnScreen(element))
+            return this.browserHelper.scrollTo(this.elementHelper.getCoordinatesOf(element));
+        return;
+    }
+
     /**
      * @param {ElementFinder} element - link on element from DOM
      * @param {string} text - text for typing in element
@@ -44,9 +51,11 @@ class Helper {
     }
 
     /**
+     *
      * @param {ElementFinder} element - link on element from DOM
      * @param {boolean} scrollFlag - show needs of scrolling
      * @param {string} title - page title that is expected
+     * @return
      */
 
     scrollAndWaitAndClickAndWaitTitleIs(element, scrollFlag, title) {
@@ -55,45 +64,62 @@ class Helper {
             .then(() => this.browserHelper.waitTitleIs(title));
     }
 
-    getValueOfSelectedItemFromList(list) {
-        return list.filter((element) => {
-           return this.elementHelper.checkAttribute(element, 'selected', 'selected')
-               .then((result) => {
-                   if (result)
-                       return this.elementHelper.getAttribute(element, 'value');
-               });
-        }).first();
+    getValueOfSelectedItemFromList(select) {
+        return this.scrollIfItNecessary(select)
+            .then(() => select.element(by.css(`option :selected="selected"`)).isPresent())
+            .then((result) => {
+                if (result)
+                    return this.elementHelper.getAttribute(select.element(by.css(`option :selected="selected"`)), 'value');
+                else
+                    return 'this dropdown list have no selected elements';
+            });
     }
 
-    selectElementByValueFromList(list, value) {
-        return list.filter((element) => {
-            return this.elementHelper.checkAttribute(element, 'value', value)
+    selectElementByValueFromList(select, value) {
+        return this.scrollIfItNecessary(select)
+            .then(() => select.element(by.css(`option :value="${value}"`)).isPresent())
                 .then((result) => {
                     if (result)
-                        return this.elementHelper.clickOn(element);
+                        return this.elementHelper.clickOn(select.element(by.css(`option :value="${value}"`)));
+                    else
+                        return select.element(by.css(`option :value*="${value}"`)).isPresent()
+                            .then((result) => {
+                                if (result)
+                                    return this.elementHelper.clickOn(select.element(by.css(`option :value*="${value}"`)));
+                                else
+                                    return `element with value ${value} is not exist in this dropdown list`;
+                            });
                 });
-        }).first();
     }
 
     getValueOfSelectedItemFromRadiogroup(radiogroup) {
-        return radiogroup.filter((radiobutton) => {
-            return this.elementHelper.checkIsElementSelected(radiobutton)
-                .then((result) => {
-                    if (result)
-                        return this.elementHelper.getAttribute(radiobutton, 'value');
-                });
-        }).first();
+        return this.scrollIfItNecessary(radiogroup)
+            .then(() => radiogroup.element(by.css('input :checked')).isPresent())
+            .then((result) => {
+                if (result)
+                    return this.elementHelper.getAttribute(radiogroup.element(by.css('input :checked')), 'value');
+                else
+                    return 'this radiogroup have no selected elements';
+            });
     }
 
     selectElementByValueOfFromRadiogroup(radiogroup, value) {
-        return radiogroup.filter((radiobutton) => {
-            return this.elementHelper.checkAttribute(radiobutton, 'value', value)
+        return this.scrollIfItNecessary(radiogroup)
+            .then(() => radiogroup.element(by.css(`input :value="${value}"`)).isPresent())
                 .then((result) => {
                     if (result)
-                        return this.elementHelper.clickOn(radiobutton);
+                        return this.elementHelper.clickOn(radiogroup.element(by.css(`input :value="${value}"`)));
+                    else
+                        return radiogroup.element(by.css(`input :value*="${value}"`)).isPresent()
+                            .then((result) => {
+                                if (result)
+                                    return this.elementHelper.clickOn(radiogroup.element(by.css(`input :value*="${value}"`)));
+                                else
+                                    return `element with value ${value} is not exist in this radiogroup`;
+                            });
                 });
-        }).first();
     }
+
 }
 
 module.exports = new Helper();

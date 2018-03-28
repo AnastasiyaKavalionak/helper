@@ -60,6 +60,17 @@ class ElementHelper {
         logger.info(`is element ${element} selected`);
         return EC.elementToBeSelected(element);
     }
+
+    isElementOnScreen(element) {
+        logger.info(`is element ${element} on screen`);
+        return this.getCoordinatesOf(element)
+            .then((result) => {
+                if (result.y > driver.manage().window().getSize().getHeight() || result.x > driver.manage().window().getSize().getWidth())
+                    return false;
+                else
+                    return true;
+            });
+    }
 }
 
 module.exports = ElementHelper;
