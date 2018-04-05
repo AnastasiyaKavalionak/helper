@@ -88,7 +88,7 @@ class Helper {
     /**
      * find element from dropdown list by value or part of value and select it
      * @param {ElementFinder} select - link on dropdown list from DOM
-     * @param {string} value - value of element whitch should be selected
+     * @param {string} value - value of element which should be selected
      * @return {Promise} select action or massage if element with given value of part of value was not found in dropdown list
      */
     selectElementByValueFromList(select, value) {
@@ -127,7 +127,7 @@ class Helper {
     /**
      * find element from radiogroup by value or part of value and select it
      * @param {ElementFinder} radiogroup - link on radiogroup from DOM
-     * @param {string} value - value of element whitch should be selected
+     * @param {string} value - value of element which should be selected
      * @return {Promise} select action or massage if element with given value of part of value was not found in radiogroup
      */
     selectElementByValueOfFromRadiogroup(radiogroup, value) {
